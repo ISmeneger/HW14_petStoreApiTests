@@ -12,6 +12,6 @@ public class Store {
     private int petId;
     private int quantity;
     private String shipDate;
-    private String status;
+    private OrderStatus status;
     private boolean complete;
 }

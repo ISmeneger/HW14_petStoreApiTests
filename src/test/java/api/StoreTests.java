@@ -8,8 +8,10 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static constants.CommonConstants.DEFAULT_STORE;
+import static constants.CommonConstants.NON_ZERO_STORE;
 
 class StoreTests {
+
     @Test
     void successfulCreateOrderTest () {
 //        String body = """
@@ -49,7 +51,22 @@ class StoreTests {
         Assertions.assertTrue(store.getId() > 46116860184273890L);
         Assertions.assertEquals(0, store.getPetId());
         Assertions.assertEquals("2025-05-18T22:49:47.993+0000", store.getShipDate());
-        Assertions.assertEquals("placed", store.getStatus());
+        Assertions.assertEquals("PLACED", store.getStatus());
+        Assertions.assertTrue(store.isComplete());
+    }
+
+    @Test
+    void successfulCreateOrderTest2 () {
+        StoreController storeController = new StoreController();
+
+        Response response = storeController.createStore(NON_ZERO_STORE);
+        Assertions.assertEquals(200, response.getStatusCode());
+
+        ApiStoreResponse store = response.as(ApiStoreResponse.class);
+        Assertions.assertEquals(1, store.getId());
+        Assertions.assertEquals(1, store.getPetId());
+        Assertions.assertEquals("2025-05-18T22:49:47.993+0000", store.getShipDate());
+        Assertions.assertEquals("APPROVED", store.getStatus());
         Assertions.assertTrue(store.isComplete());
     }
 
