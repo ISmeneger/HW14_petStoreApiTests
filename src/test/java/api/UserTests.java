@@ -39,7 +39,6 @@ class UserTests {
         Assertions.assertEquals("1", user.getMessage());
     }
 
-
     @Test
     void getUserTest() {
         UserController userController = new UserController();
