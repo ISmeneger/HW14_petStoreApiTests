@@ -1,5 +1,6 @@
 package constants;
 
+import models.OrderStatus;
 import models.Store;
 import models.User;
 
@@ -12,5 +13,7 @@ public class CommonConstants {
 
     public static final User UPDATE_USER = new User(1, "string2", "string2","string2","string2","string2","string2", 1);
 
-    public static final Store DEFAULT_STORE = new Store(0, 0, 0,"2025-05-18T22:49:47.993Z", "placed", true);
+    public static final Store DEFAULT_STORE = new Store(0, 0, 0,"2025-05-18T22:49:47.993Z", OrderStatus.PLACED, true);
+
+    public static final Store NON_ZERO_STORE = new Store(1, 1, 1,"2025-05-18T22:49:47.993Z", OrderStatus.APPROVED, true);
 }
